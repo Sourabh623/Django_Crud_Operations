@@ -35,13 +35,3 @@ class StudentSerializerUpdate(serializers.Serializer):
         instance.created_at = validated_data.get('created_at',instance.created_at)
         instance.save()
         return instance
-
-# create serializer class for delete model
-class StudentSerializerDelete(serializers.Serializer):
-    name = serializers.CharField(max_length=100)
-    roll_no = serializers.IntegerField()
-    city = serializers.CharField(max_length=100)
-    created_at = serializers.DateField()
-
-    def delete(self, validated_data):
-        return Student.objects.create(**validated_data)
